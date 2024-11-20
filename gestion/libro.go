@@ -13,6 +13,7 @@ type Libro struct {
 	fecha   string
 	titulo  string
 	archivo string
+	idAutor int
 }
 
 // zona de Sett's
@@ -28,6 +29,10 @@ func (l *Libro) SetArchivo(archivo string) {
 	l.archivo = archivo
 }
 
+func (l *Libro) SetIdAutor(idAutor int) {
+	l.idAutor = idAutor
+}
+
 // zona de Get's
 func (l *Libro) GetFecha() string {
 	return l.fecha
@@ -37,6 +42,9 @@ func (l *Libro) GetTitulo() string {
 }
 func (l *Libro) GetArchivo() string {
 	return l.archivo
+}
+func (l *Libro) GetIdAutor() int {
+	return l.idAutor
 }
 
 // Constructor que permite el ingreso de un libro nuevo
@@ -49,5 +57,3 @@ func (l *Libro) IngresoLibro(db *sql.DB) {
 		fmt.Println(err)
 	}
 }
-
- 

@@ -1,7 +1,10 @@
-//@autor: Israael Espinoza
-//@version: 1.0
-//@fecha: 13/05/2024
-//@descripcion: Esta aplicacion tiene el objetivo de gestionar un sistema de libros electrónicos.
+/*
+	@autor: Marcelo Barrera
+			Alex Hidalgo
+	@fecha: 7/11/2024
+	@descripcion: Iniciod el proyecto de diseño de un sitema
+	de gestion
+*/
 
 package main
 
@@ -65,6 +68,20 @@ func menuInicio(db *sql.DB) {
 			archivo = strings.TrimSpace(archivo)
 			nlibro.SetArchivo(archivo)
 
+			//Solicito la ID del autor en caso de que exista
+			var op int
+			/*
+				fmt.println (AutorListado(db))
+				fmt.Println("Presione 1 y Digite el ID del autor que desea ingresar")
+				fmt.println("En caso de que no conste en la lista digite 2")
+				fmt.Scan(&listautores)
+			*/
+			switch op {
+			case 1:
+				fmt.Println("Ingrese la ID correspondiente al autor")
+
+			}
+
 			//Solicito el Nombre de Autor
 			fmt.Println("Nombre del Autor: (solo nombres) ")
 			nombreA, _ := reader.ReadString('\n')
@@ -77,15 +94,17 @@ func menuInicio(db *sql.DB) {
 			nautor.SetApellido(apellidoA)
 
 			//Imprimo la informacion sobre el libro
-			fmt.Println(
-				nlibro.GetTitulo(),
-				nlibro.GetFecha(),
-				nautor.GetNombre(),
-				nautor.GetApellido(),
-				nautor.GetIdAutor())
+			/* fmt.Println(
+			nlibro.GetTitulo(),
+			nlibro.GetFecha(),
+			nautor.GetNombre(),
+			nautor.GetApellido(),
+			nautor.GetIdAutor()) */
+
 			nlibro.IngresoLibro(db)
 			nautor.IngresoAutor(db)
 			nautor.IDAutor(db)
+			nautor.AutorListado(db)
 
 			// prueba de impresion del ID del autor
 

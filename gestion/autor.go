@@ -59,4 +59,14 @@ func (a *Autor) IDAutor(db *sql.DB) {
 	}
 }
 
+func (a *Autor) AutorListado(db *sql.DB) {
+	//mostramos la lista de autores
+
+	_, err := db.Exec("SELECT * FROM autor", a.IdA)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+}
+
 //mostrar los libros pertenecientes a cada autor
