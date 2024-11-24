@@ -9,10 +9,10 @@
 package main
 
 import (
-	"bufio"
+	"bufio" //Implementar E/S almacenada en bufer
 	"fmt"
 	"os"
-	"strings"
+	"strings" // nos permite trabajar con cadenas de texto
 
 	//area de importacion de clases
 	gestionBiblioteca "gestionBiblioteca/gestion"
@@ -69,29 +69,19 @@ func menuInicio(db *sql.DB) {
 			nlibro.SetArchivo(archivo)
 
 			//Solicito la ID del autor en caso de que exista
-			var op int
+
 			/*
 				fmt.println (AutorListado(db))
 				fmt.Println("Presione 1 y Digite el ID del autor que desea ingresar")
 				fmt.println("En caso de que no conste en la lista digite 2")
 				fmt.Scan(&listautores)
 			*/
-			switch op {
-			case 1:
-				fmt.Println("Ingrese la ID correspondiente al autor")
-
-			}
 
 			//Solicito el Nombre de Autor
-			fmt.Println("Nombre del Autor: (solo nombres) ")
+			fmt.Println("Nombre del Autor: ")
 			nombreA, _ := reader.ReadString('\n')
 			nombreA = strings.TrimSpace(nombreA)
 			nautor.SetNombre(nombreA)
-			//Solicito el apellido del Autor
-			fmt.Println("Apellido del autor: ")
-			apellidoA, _ := reader.ReadString('\n')
-			apellidoA = strings.TrimSpace(apellidoA)
-			nautor.SetApellido(apellidoA)
 
 			//Imprimo la informacion sobre el libro
 			/* fmt.Println(
@@ -126,7 +116,7 @@ func conexionBdd() *sql.DB {
 		port     = 5432
 		user     = "postgres"
 		password = "mibe2001"
-		dbname   = "Biblioteca"
+		dbname   = "postgres"
 	)
 	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+"password=%s dbname=%s sslmode=disable",
 		host, port, user, password, dbname)

@@ -11,17 +11,13 @@ import (
 //creacion del objeto
 
 type Autor struct {
-	nombre   string
-	apellido string
-	IdA      int
+	nombre string
+	IdA    int
 }
 
 // zona de set's
 func (a *Autor) SetNombre(nombre string) {
 	a.nombre = nombre
-}
-func (a *Autor) SetApellido(apellido string) {
-	a.apellido = apellido
 }
 
 //zona de get's
@@ -29,9 +25,7 @@ func (a *Autor) SetApellido(apellido string) {
 func (a *Autor) GetNombre() string {
 	return a.nombre
 }
-func (a *Autor) GetApellido() string {
-	return a.apellido
-}
+
 func (a *Autor) GetIdAutor() int {
 	return a.IdA
 }
@@ -41,19 +35,19 @@ func (a *Autor) GetIdAutor() int {
 func (a *Autor) IngresoAutor(db *sql.DB) {
 
 	// Insertar un nuevo autor
-	_, err := db.Exec("INSERT INTO Autor (nombre, apellido) VALUES ($1, $2)",
-		a.nombre, a.apellido)
+	_, err := db.Exec("INSERT INTO autor (nombre) VALUES ($1)",
+		a.nombre)
 	if err != nil {
 		fmt.Println(err)
 	}
 }
 
-// obtener la ID del autor nueuvo ingresado
+// obtener la ID del autor nuuevo ingresado
 
 func (a *Autor) IDAutor(db *sql.DB) {
 	//recuperar el ID del autor
 
-	_, err := db.Exec("SELECT id_autor FROM autor", a.IdA)
+	_, err := db.Exec("SELECT id FROM autor", a.IdA)
 	if err != nil {
 		fmt.Println(err)
 	}
