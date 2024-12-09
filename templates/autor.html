@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Autor</title>
+    <style>
+        
+        /* Estilos generales del cuerpo */
+        body {
+        
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Contenedor principal del formulario */
+        h1 {
+            text-align: start;
+            color: #333;
+        }
+
+        /* Estilo del formulario */
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        /* Estilo de las etiquetas */
+        label {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        /* Estilo de los campos de texto */
+        input[type="text"] {
+            width: 90%;
+            padding: 12px;
+            margin: 8px 0 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        /* Estilo del botón */
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Estilo para los campos requeridos */
+        input:required {
+            border: 2px solid #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Agregar Autor</h1>
+    <form action="/submitAutor" method="POST">
+        <label for="nombreAutor">Nombre del Autor:</label><br>
+        <input type="text" id="nombreAutor" name="nombreAutor" placeholder="Ingrese el nombre del autor" required><br><br>
+        <button type="submit">Guardar y Continuar</button>
+    </form>
+</body>
+</html>

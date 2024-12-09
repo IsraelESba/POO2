@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Libro</title>
+    <style>
+        /* Estilos generales del cuerpo */
+body {
+
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+/* Contenedor principal del formulario */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Estilo del formulario */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+/* Estilo de las etiquetas */
+label {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* Estilo de los campos de texto */
+input[type="text"] {
+    width: 90%;
+    padding: 12px;
+    margin: 8px 0 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #f9f9f9;
+}
+
+/* Estilo del botón de guardar */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Estilo para los campos requeridos */
+input:required {
+    border: 2px solid #4CAF50;
+}
+
+/* Estilo del botón para volver a registrar autor */
+form button {
+    background-color: #2196F3;
+    font-size: 14px;
+}
+
+form button:hover {
+    background-color: #0b7dda;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Agregar Libro</h1>
+    <form action="/submitLibro" method="POST">
+        <label for="tituloLibro">Título del Libro:</label><br>
+        <input type="text" id="tituloLibro" name="tituloLibro" placeholder="Ingrese el título del libro" required><br><br>
+        <button type="submit">Guardar Libro</button>
+    </form>
+</body>
+</html>
