@@ -53,9 +53,18 @@ p {
     color: white;
     width: 50%;
     padding: 12px;
-  
+    margin: 10px;
+    border-radius: 7px;
+    text-decoration: none;
+}
+.btn:hover{
+    transform: scale(1.10);
 }
 
+.botones{
+    display: flex;
+    flex-direction: row;
+}
     </style>
 </head>
 <body>
@@ -65,13 +74,12 @@ p {
         <h1>Bienvenido a tu Libro Electrónico</h1>
         <p>Sumérgete en un mundo de conocimiento y aventuras literarias.</p>
 
+        <div class="botones">
+            <!-- Enlace para ir a un formulario de libros (por ejemplo) -->
+            <a href="/libro" class="btn">Registrar un Libro</a>
 
-       
-        
-             <!-- Enlace para ir a un formulario de libros (por ejemplo) -->
-        <a href="/" class="btn">Registrar un Libro</a>
-
-       
+            <a href="/eliminar" class="btn">Eliminar un libro</a>
+        </div>
     </div>
 
 </body>

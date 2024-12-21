@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminacion</title>
+    <style>
+        body{
+            margin: 0;
+            
+        }
+        header{
+            background-color:#4CAF50 ;
+        }
+
+        .encabezado{
+            padding: 20px;
+            color: white;
+            text-align: center;
+            margin: 0;
+        }
+        .regreso{
+            display: flex;
+            margin: 20px;
+            border: 0;
+            border-radius: 7px;
+            background-color: #4CAF50;
+            width: fit-content;
+        }
+        .regreso:hover{
+            transform: scale(1.10);
+        }
+        .regresoa{
+            display: flex;
+            border-radius: 6px;
+            padding: 15px;
+            width: 100px;
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+        .introduccion{
+            margin: 20px;
+            font-family: cursive;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Libros</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{range .}}
+            <tr>
+                <td>{{.ID}}</td>
+                <td>{{.Title}}</td>
+            </tr>
+            {{end}}
+        </tbody>
+    </table>
+</body>
+</html>
