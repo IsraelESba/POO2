@@ -115,7 +115,7 @@ func conexionBdd() *sql.DB {
 		host     = "localhost"
 		port     = 5432
 		user     = "postgres"
-		password = "mibe2001"
+		password = "******"
 		dbname   = "postgres"
 	)
 	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+"password=%s dbname=%s sslmode=disable",
