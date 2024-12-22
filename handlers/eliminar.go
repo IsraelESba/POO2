@@ -11,7 +11,7 @@ import (
 // Conexión a la base de datos PostgreSQL
 func obtenerLibros() ([]models.Libro, error) {
 	// Aquí va la conexión a tu base de datos PostgreSQL
-	connStr := "user=postgres dbname=postgres password=mibe2001 host=localhost sslmode=disable"
+	connStr := "user=postgres dbname=postgres password=******* host=localhost sslmode=disable"
 	db, err := sql.Open("postgres", connStr)
 	if err != nil {
 		return nil, err
