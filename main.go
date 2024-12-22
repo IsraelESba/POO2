@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	db.InitDB("localhost", "postgres", "mibe2001", "postgres", 5432)
+	db.InitDB("localhost", "postgres", "******", "postgres", 5432)
 	defer db.DB.Close()
 
 	http.HandleFunc("/", handlers.InicioHandler)
