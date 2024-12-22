@@ -1,12 +1,86 @@
-<!-- libros.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Lista de Libros</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        li {
+            background-color: #ffffff;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        li:hover {
+            background-color: #f1f1f1;
+        }
+
+        li span {
+            font-weight: bold;
+            color: #333;
+        }
+
+        form {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 15px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="number"], button {
+            width: calc(50% - 10px);
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
     <h1>Lista de Libros</h1>
+    <form method="POST" action="/procesarEliminacion">
+        <label for="id">ID del libro a eliminar:</label>
+        <input type="number" name="id" id="id" placeholder="Ingrese el ID" >
+        <button type="submit">Eliminar Libro</button>
+    </form>
     <ul>
         {{range .}}
             <li>ID: {{.ID}} - Titulo: {{.Titulo}}</li>

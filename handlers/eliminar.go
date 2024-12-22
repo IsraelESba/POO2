@@ -5,12 +5,8 @@ import (
 	"database/sql"
 	"html/template"
 	"net/http"
+	"strconv"
 )
-
-type Book struct {
-	ID     int
-	Titulo string
-}
 
 // Conexión a la base de datos PostgreSQL
 func obtenerLibros() ([]models.Libro, error) {
@@ -23,7 +19,7 @@ func obtenerLibros() ([]models.Libro, error) {
 	defer db.Close()
 
 	// Consultamos los libros
-	rows, err := db.Query("SELECT id, titulo FROM libro")
+	rows, err := db.Query("SELECT id, titulo FROM libro ORDER BY id")
 	if err != nil {
 		return nil, err
 	}
@@ -43,24 +39,57 @@ func obtenerLibros() ([]models.Libro, error) {
 	return libros, nil
 }
 
-// Manejador HTTP que renderiza la página HTML
-func HandlerEliminar(w http.ResponseWriter, r *http.Request) {
+// Eliminar un libro por ID
+func eliminarLibro(id int) error {
+	connStr := "user=postgres dbname=postgres password=mibe2001 host=localhost sslmode=disable"
+	db, err := sql.Open("postgres", connStr)
+	if err != nil {
+		return err
+	}
+	defer db.Close()
+
+	_, err = db.Exec("DELETE FROM libro WHERE id = $1", id)
+	return err
+}
+
+// Manejador para mostrar el formulario
+func MostrarFormularioEliminar(w http.ResponseWriter, r *http.Request) {
 	libros, err := obtenerLibros()
 	if err != nil {
-		http.Error(w, "No se pudo obtener los libros", http.StatusInternalServerError)
+		http.Error(w, "No se pudo obtener la lista de libros", http.StatusInternalServerError)
 		return
 	}
 
-	// Cargar la plantilla HTML desde el archivo
 	tmpl, err := template.ParseFiles("templates/eliminacion.html")
 	if err != nil {
 		http.Error(w, "Error al cargar la plantilla", http.StatusInternalServerError)
 		return
 	}
 
-	// Ejecutar la plantilla HTML con los datos de los libros
 	err = tmpl.Execute(w, libros)
 	if err != nil {
-		http.Error(w, "Error al renderizar la página", http.StatusInternalServerError)
+		http.Error(w, "Error al renderizar la plantilla", http.StatusInternalServerError)
 	}
+}
+
+// Manejador para procesar la eliminación
+func ProcesarEliminacion(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "Método no permitido", http.StatusMethodNotAllowed)
+		return
+	}
+
+	idStr := r.FormValue("id")
+	id, err := strconv.Atoi(idStr)
+	if err != nil {
+		http.Error(w, "ID inválido", http.StatusBadRequest)
+		return
+	}
+
+	if err := eliminarLibro(id); err != nil {
+		http.Error(w, "Error al eliminar el libro", http.StatusInternalServerError)
+		return
+	}
+
+	http.Redirect(w, r, "/", http.StatusSeeOther)
 }

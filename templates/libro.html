@@ -35,7 +35,7 @@
             margin-bottom: 8px;
             display: block;
         }
-        input[type="text"], input[type="number"] {
+        input[type="text"], input[type="number"], input[type="date"], select {
             width: 90%;
             padding: 12px;
             margin: 8px 0 20px 0;
@@ -58,21 +58,70 @@
         button:hover {
             background-color: #45a049;
         }
+        p{
+            text-align: center;
+        }
+        a{
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            padding: 12px;
+        }
+        .regreso{
+            padding: 0;
+           margin: 30px;
+           width: 200px;
+        }
+
+        ul{
+            color: black;
+            height: 20px;
+            list-style-type: none;
+            padding: 0;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 800px;
+            border: solid black;
+        }
     </style>
 </head>
 <body>
     <h1>Agregar Libro</h1>
+    <p class="advertencia" type="advertencia">
+        En caso de que no exista el Autor en la BDD <br>
+        Ingrese uno nuevo desde la ventana de Ingresar Autor
+    </p>
     <form action="/submitLibro" method="POST">
         <label for="tituloLibro">Título del Libro:</label>
         <input type="text" id="tituloLibro" name="tituloLibro" placeholder="Ingrese el título del libro" required>
 
-        <label for="idAutor">ID del Autor:</label>
-        <input type="number" id="idAutor" name="idAutor" placeholder="Ingrese el ID del autor" required>
+        <label for="idAutor">Autor:</label>
+        <select id="idAutor" name="idAutor" required>
+            <option value="">Seleccione un autor</option>
+            {{range .autores}}
+                <option value="{{.id}}">{{.nombre}}</option>
+            {{end}}
+        </select>
 
-        <label for="idGenero">ID del Género:</label>
-        <input type="number" id="idGenero" name="idGenero" placeholder="Ingrese el ID del género" required>
+        <label for="idGenero">Género:</label>
+        <select id="idGenero" name="idGenero" required>
+            <option value="">Seleccione un género</option>
+            {{range .generos}}
+                <option value="{{.id}}">{{.tipo}}</option>
+            {{end}}
+        </select>
+
+        <label for="fechaPublicacion">Fecha de Publicación:</label>
+        <input type="date" id="fechaPublicacion" name="fechaPublicacion" required>
 
         <button type="submit">Guardar Libro</button>
     </form>
+    <button class="regreso">  
+        <a href="/">
+            Regreso
+        </a>
+    </button>
 </body>
 </html>

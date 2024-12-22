@@ -17,7 +17,8 @@ func main() {
 	http.HandleFunc("/submitAutor", handlers.EnvioAutorHandler)
 	http.HandleFunc("/libro", handlers.LibroFormHandler)
 	http.HandleFunc("/submitLibro", handlers.EnvioLibroHandler)
-	http.HandleFunc("/eliminar", handlers.HandlerEliminar)
+	http.HandleFunc("/eliminacion", handlers.MostrarFormularioEliminar)
+	http.HandleFunc("/procesarEliminacion", handlers.ProcesarEliminacion)
 
 	log.Println("Servidor corriendo en http://localhost:3000")
 	log.Fatal(http.ListenAndServe(":3000", nil))
