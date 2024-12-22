@@ -1,4 +1,4 @@
-module Prueba
+module POO2
 
 go 1.23.2
 

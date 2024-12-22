@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"strings"
 
-	"Prueba/db"
+	"POO2/db"
 )
 
 func AutorFormHandler(rw http.ResponseWriter, r *http.Request) {

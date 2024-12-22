@@ -4,8 +4,8 @@ import (
 	"log"
 	"net/http"
 
+	"POO2/db"
 	"POO2/handlers"
-	"Prueba/db"
 )
 
 func main() {
@@ -17,7 +17,7 @@ func main() {
 	http.HandleFunc("/submitAutor", handlers.EnvioAutorHandler)
 	http.HandleFunc("/libro", handlers.LibroFormHandler)
 	http.HandleFunc("/submitLibro", handlers.EnvioLibroHandler)
-	http.HandleFunc("/eliminar", handlers.EliminarHandler)
+	http.HandleFunc("/eliminar", handlers.HandlerEliminar)
 
 	log.Println("Servidor corriendo en http://localhost:3000")
 	log.Fatal(http.ListenAndServe(":3000", nil))
